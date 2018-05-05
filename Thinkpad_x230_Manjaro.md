@@ -7,7 +7,7 @@ Kernel: 4.16.4-1
 ## Install Manjaro
 
 Just use the graphical installer or architect and follow the steps.
-Keyboard layout: pay attention depending on your language, may need alternate layout to remove dead keys.
+Test every keys of the keyboard to select the proper layout.
 
 ### What is working
 

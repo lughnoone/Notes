@@ -56,6 +56,27 @@ If ok, next, close app.
 
 Lock screen, press enter, swipe finger, press 'enter' -> you're logged in !
 
+#### Hibernate on laptop lid closing
+
+By default, nothing happens when the laptop lid is closed.
+
+To suspend the laptop when lid is closed, click on *Menu* -> 
+*Tweaks* -> *Power* -> and enable *Suspend when laptop lid is 
+closed*
+
+To make it hibernate when lid is closed, you need one more step:
+
+Edit `sudo nano /etc/systemd/logind.conf` and change
+
+```
+#HandleLidSwitch=suspend
+```
+to
+```
+HandleLidSwitch=hibernate
+```
+
+Reboot or run `systemctl restart systemd-logind.service`
 ### What does not work
 
 For now, nothing !

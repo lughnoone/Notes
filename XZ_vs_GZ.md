@@ -14,7 +14,7 @@ some links:
 
 To sum-up:
 
-* gz if faster, needs lets memory/CPU, but has a lower compression 
+* gz if faster, needs less memory/CPU, but has a lower compression 
 ratio
 * xz benefits of the LZMA/LZMA2 compression algorithm - so has better 
 compression ratio, but is slower at compression/decompression time and 

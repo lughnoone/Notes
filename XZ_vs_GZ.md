@@ -14,7 +14,7 @@ some links:
 
 To sum-up:
 
-* gz if faster, needs less memory/CPU, but has a lower compression 
+* gz is faster, needs less memory/CPU, but has a lower compression 
 ratio
 * xz benefits of the LZMA/LZMA2 compression algorithm - so has better 
 compression ratio, but is slower at compression/decompression time and 
@@ -22,7 +22,7 @@ need more memory/CPU (and is less spread).
 
 So GZ is the choice for inter-operability or embedded systems. XZ is the 
 choice when file transfer time matter, and source/destination systems 
-are recent and powerful.
+are recent and powerfull.
 
 ## Usage
 

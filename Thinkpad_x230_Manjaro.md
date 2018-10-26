@@ -1,8 +1,9 @@
-# Thinkpad X230 Manjaro 17.1.9
+# Thinkpad X230 Manjaro 17.1.12
 
-Quick notes on how to install Manjaro Gnome 17.1.9 on a Lenovo Thinkpad X230.
+Quick notes on how to install Manjaro Gnome 17.1.12 on a Lenovo Thinkpad 
+X230.
 Inspired from ArchLinux wiki: https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X230
-Kernel: 4.16.4-1
+Kernel: 4.19.0-2
 
 ## Install Manjaro
 
@@ -20,10 +21,8 @@ Test every keys of the keyboard to select the proper layout.
 * WiFi / Bluetooth (Ethernet not tested yet)
 * Sound
 * Fan control
-* ...
-
-### What is almost working
-* Webcam: well detected by the system (`lsusb`), but Cheese Gnome application is unable to use it. Seems a bug report has been opened for Cheese version 3.28 (lost the link). Just use another app in the meantime: Vokoscreen is great replacement, VLC also does the job.
+* Webcam: well detected by the system (`lsusb`), ~~but Cheese Gnome application is unable to use it. Seems a bug report has been opened for Cheese version 3.28 (lost the link). Just use another app in the meantime: Vokoscreen is great replacement, VLC also does the job.~~ and Cheese now works properly.
+*...
 
 ### What needs setup
 * Fingerprint reader is not working out of the box, but works like a charm after setup.
@@ -60,8 +59,8 @@ Lock screen, press enter, swipe finger, press 'enter' -> you're logged in !
 
 By default, nothing happens when the laptop lid is closed.
 
-To suspend the laptop when lid is closed, click on *Menu* -> 
-*Tweaks* -> *Power* -> and enable *Suspend when laptop lid is 
+To suspend the laptop when lid is closed, click on *Menu* ->
+*Tweaks* -> *Power* -> and enable *Suspend when laptop lid is
 closed*
 
 To make it hibernate when lid is closed, you need one more step:

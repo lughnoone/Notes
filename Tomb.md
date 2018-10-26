@@ -1,6 +1,6 @@
-# TOMB
+# TOMB - Quick Card
 
-Few commands about Tomb. Full detail at https://www.dyne.org/software/tomb/
+Few commands about Tomb. Full details at https://www.dyne.org/software/tomb/
 
 ## Create a 10M Tomb
 ```
@@ -29,4 +29,4 @@ You must not be in the Tomb to close it.
 tomb slam all
 ```
 ## Other information
-The size of a Tomb can be increase on demand, keys can be stored in images (steganography), or even exported to a physical form like a QR code (see bury, exhume, engrave). Finally, keys or Tombs can be used on/from remote locations.
+The size of a Tomb can be increased on demand, keys can be stored in images (steganography), or even exported to a physical form like a QR code (see bury, exhume, engrave). Finally, keys or Tombs can be used on/from remote locations.

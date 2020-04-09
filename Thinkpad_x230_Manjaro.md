@@ -84,6 +84,7 @@ sedutil-cli --reverttper <password> <drive>
 *...
 * Fingerprint reader
 Go to Account setting -> Enable finger print login
+(battery menu, username, account settings, enable finger print login)
 
 
 ### What needs setup

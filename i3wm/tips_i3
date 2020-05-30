@@ -1,0 +1,81 @@
+#power management
+run xfce4-power-manager-setting to display icon, notifications and activate lid closur action
+also allows to parameter brightness reduction, etc. 
+
+# background lightdm
+install lightdm-settings, store picture with others, select the one.
+
+# change browser
+intall firefox
+replace everything related to 'palemoon' or 'Pale Moon' in .i3/config and .profile
+-> then esni procedure (network manager for dns, ipv4-6), options in ff and default dns
+-> check cloudflare documentation
+
+#terminal transparency
+edit .Xresources and search for tranparency and replace with:
+URxvt*inheritPixmap:            true
+URxvt*transparent:              true
+URxvt*shading:                  20
+
+
+# better prompt
+in .bashrc
+PS1="\[\e[01;36m\]\u\[\e[m\]\[\e[01;32m\]@\[\e[m\]\[\e[01;34m\]\h\[\e[m\]\[\e[01;32m\]:\[\e[m\]\[\e[01;32m\]\w\[\e[m\]\[\e[01;32m\] \[\e[m\]\[\e[01;32m\]\\$\[\e[m\] "
+
+# aliases
+since we are in .bash_rc ..
+alias ..='cd ..'
+alias ll='ls -al'
+
+# install pusle ??
+I dont see the need, but can be done with 'install_pulse'
+
+# reinstall non-bugged conky
+unstall conky breaking dependencies
+sudo pacman -Rdd conky
+then install
+conky-git and conky-i3 if not done already
+
+# proper screen resolution and multi-scree
+xrandr (console)
+arandr (GUI !!)
+
+# wallpapers ?
+install artwork-i3, i3-default-artwork
+to change run 'pcmanfm'
+
+# Kernels ?
+install manjaro-settings-manager
+
+# blue light ?
+install redshift
+
+edit .i3/config
+exec --no-startup-id redshift
+
+# change machine name
+hostnamectl set-hostname mi3
+
+# install bluetooth
+https://wiki.archlinux.org/index.php/Bluetooth
+
+install bluez + bluez-utils + blueberry
+
+systemctl start bluetooth.service
+systemctl enable bluetooth.service
+
+edit .i3/config: (system tray icon)
+exec --no-startup-id blueberry-tray
+
+# resize with mouse
+just win+right click to resize
+
+# status bar config
+default : /etc/i3status.conf
+
+cooy it to ~/.config/i3status/config and then modify
+
+# replace dmenu by rofi
+install rofi
+
+bindsym $mod+d exec --no-startup-id rofi -show drun

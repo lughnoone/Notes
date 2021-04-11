@@ -1,4 +1,4 @@
-# Install Manjaro Linux on a Thinkpad x270
+# Install Manjaro Linux 21 on a Thinkpad x270
 This document aims at gathering the few info needed to install Manjaro Linux on a Thinkpad x270.
 It may also include some customization tips.
 
@@ -85,12 +85,39 @@ sedutil-cli --revertnoerase <password> <drive>
 sedutil-cli --reverttper <password> <drive> 
 ```
 
+### Battery
+(From: https://www.valhalla.fr/2018/12/02/manjaro-thinkpad-checklist/)
+
+Install '''tp_smapi''' and '''acpi_call''' for your kernel.
+Also install '''tlpui''.
+
+### CPU scaling and audio powersaving
+(From: https://www.valhalla.fr/2018/12/02/manjaro-thinkpad-checklist/ and https://wiki.archlinux.org/index.php/Power_management)
+
+Create and edit ```/etc/tmpfiles.d/energy_performance_preference.conf```
+add:
+```
+w /sys/devices/system/cpu/cpufreq/policy?/energy_performance_preference - - - - balance_power
+```
+
+For audio powersavings, create and edit ```/etc/modprobe.d/audio_powersave.conf```
+add:
+```
+options snd_hda_intel power_save=1
+```
+
+
 ## Display
 
-### Font size
+### Scaling
 Because the screen resolution is 1920x1080 on a 12"5 screen, except if you have hawk eyes, you need to increase the font size to ~125%.
 
-To do so, open ```Tweaks``` application, section ```Font``` and define the scaling factor to 1.25.
+In a terminal:
+```
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+```
+
+Then right click on desktop, display settings and select the 125% scaling.
 
 ## Customization tips
 
@@ -136,3 +163,11 @@ To set the dock transparency, run the ```Extension``` application and adapt the 
 
 ## Not working
 For now the finger print reader ... but expected at this stage. To be investigated.
+
+Potential issue (not tested yet) with audio via HDMI.
+
+For both issues, check decicated Arch page below.
+
+## Other
+### Links
+* Dedicated Arch page: https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X270

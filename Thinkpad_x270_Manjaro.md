@@ -163,6 +163,15 @@ To set the dock transparency, run the ```Extension``` application and adapt the 
 
 ## Not working
 For now the finger print reader ... but expected at this stage. To be investigated.
+* https://github.com/3v1n0/libfprint
+* https://snapcraft.io/validity-sensors-tools
+```
+sudo snap connect validity-sensors-tools:raw-usb 
+sudo snap connect validity-sensors-tools:hardware-observe
+cd /
+sudo validity-sensors-tools.initializer
+```
+but it fails to upload the firmware
 
 Potential issue (not tested yet) with audio via HDMI.
 

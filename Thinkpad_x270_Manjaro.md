@@ -161,6 +161,11 @@ background-color: rgba(0, 0, 0, 0);
 ### Transparent Dock
 To set the dock transparency, run the ```Extension``` application and adapt the transparency in ```Dash to Dock``` extension settings.
 
+## Sound
+### Maximun volume is low
+
+Open the ```Tweaks``` from Gnome, ```General```, activate ```Over Amplification```
+
 ## Not working
 For now the finger print reader ... but expected at this stage. To be investigated.
 * https://github.com/3v1n0/libfprint

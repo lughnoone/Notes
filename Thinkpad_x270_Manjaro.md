@@ -89,9 +89,11 @@ sedutil-cli --reverttper <password> <drive>
 (From: https://www.valhalla.fr/2018/12/02/manjaro-thinkpad-checklist/)
 
 Install '''tp_smapi''' and '''acpi_call''' for your kernel.
-Also install '''tlpui''.
+Also install '''tlpui''. All setup can be done via the UI.
 
 ### CPU scaling and audio powersaving
+***Note: probably useless, since everything can be handled by ```tlpui```***
+
 (From: https://www.valhalla.fr/2018/12/02/manjaro-thinkpad-checklist/ and https://wiki.archlinux.org/index.php/Power_management)
 
 Create and edit ```/etc/tmpfiles.d/energy_performance_preference.conf```
@@ -162,9 +164,12 @@ background-color: rgba(0, 0, 0, 0);
 To set the dock transparency, run the ```Extension``` application and adapt the transparency in ```Dash to Dock``` extension settings.
 
 ## Sound
-### Maximun volume is low
+### Maximum volume is low
 
 Open the ```Tweaks``` from Gnome, ```General```, activate ```Over Amplification```
+
+### HDMI
+Works out of the box, just select the proper audio output in audio settings in case the sound keeps coming from the computer speakers.
 
 ## Not working
 For now the finger print reader ... but expected at this stage. To be investigated.

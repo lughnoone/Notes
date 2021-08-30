@@ -136,6 +136,18 @@ Potential issue (not tested yet) with audio via HDMI.
 
 For both issues, check decicated Arch page below.
 
+## Customization
+### Bash
+
+To tweak a bit the default ugly bash prompt, install ```nerd-fonts-hack``` which extends _hack_ font used by Konsole with fancy icons.
+
+Then install _trueline_ bash powerline [https://github.com/petobens/trueline](https://github.com/petobens/trueline):
+
+```
+git clone https://github.com/petobens/trueline ~/trueline
+echo 'source ~/trueline/trueline.sh' >> ~/.bashrc
+```
+
 ## Other
 ### Links
 * Dedicated Arch page: https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X270

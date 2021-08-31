@@ -109,6 +109,19 @@ add:
 options snd_hda_intel power_save=1
 ```
 
+### Bluetooth
+Bluetooth is not enabled by default because of security risks ...
+
+```
+sudo pacman -S --needed bluez bluez-utils pulseaudio-bluetooth
+sudo systemctl enable --now bluetooth
+```
+
+Then install a UI to manage it: ```bluedevil``` for KDE.
+
+Then go to settings and select _bluetooth_.
+
+See [https://discovery.endeavouros.com/bluetooth/bluetooth/2021/03/](https://discovery.endeavouros.com/bluetooth/bluetooth/2021/03/)
 
 ## Display
 

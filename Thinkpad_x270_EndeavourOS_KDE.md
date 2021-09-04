@@ -109,6 +109,29 @@ add:
 options snd_hda_intel power_save=1
 ```
 
+### Fan control
+(source: [https://wiki.archlinux.org/title/Fan_speed_control](https://wiki.archlinux.org/title/Fan_speed_control))
+
+Installing ```thinkfan```and ```thinkfan-ui``` seems overrated.
+
+Let's start with detecting the sensors:
+
+```
+sudo sensors-detect
+```
+
+Just type enter to select the default value and update the configuration file.
+
+### Network
+Open KDE settings -> Connections.
+
+For wired and wireless connection, in IPv4 and IPv6 tabs, select method "Automatic (Only Adresses)" and specify the DNSs:
+
+```
+1.0.0.0,1.1.1.1
+2606:4700:4700::1111,2606:4700:4700::1001
+```
+
 ### Bluetooth
 Bluetooth is not enabled by default because of security risks ...
 

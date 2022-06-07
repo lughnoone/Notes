@@ -28,6 +28,7 @@ See: https://www.happycoders.eu/manjaro-tutorial-installing-manjaro-linux-dell-x
 ```
 gunzip RESCUE64.img.gz
 ```
+
 and load the image on a USB drive (used for recovery) (win32 imager, dd, rufus, etc.)
 Boot on the usb key and login as `root`
 
@@ -58,7 +59,7 @@ sedutil-cli --setadmin1pwd debug yourrealpassword /dev/sda
 sedutil-cli --setmbrdone on yourrealpassword /dev/sda
 ```
 
-**WARNING, it seems some disks, like crucial MX500 do not support disabling OPAL, so you CANNOT decrypt the ssd once activated.
+**WARNING, it seems some disks, like Crucial MX500 do not support disabling OPAL, so you CANNOT decrypt the ssd once activated.
 
 Only way is to do a PSID reset (all data lost) with Crucial Storage Executive (you need the PSID that is writen on the disk itself)**
 

@@ -4,7 +4,7 @@
 
 _(prerequisite: install from AUR ```timeshift```, ```timeshift-autosnap```, ```hibernator``` with ```yay```)_
 
-The aim of this procedure is to explain haw to setup Hibernation on a Btrfs file system encrypted with LUKS. Since Btrfs and _swap_ partition do not coexist well on LUKS, the idea is to use a swap file. Even if Btrfs now supports with kernel > 5.11 (??), it is not obvious to make it work without break the MUCH useful _snapshot_ functionality.
+The aim of this procedure is to explain how to setup Hibernation on a Btrfs file system encrypted with LUKS. Since Btrfs and _swap_ partition do not coexist well on LUKS, the idea is to use a swap file. Even if Btrfs now supports hibernationwith kernel > 5.11 (??), it is not obvious to make it work without breaking the MUCH useful _snapshot_ functionality.
 
 We'll explain here how to make it work, knowledge gathered after much search on Internet.
 
@@ -17,7 +17,7 @@ sudo chattr +C /@swap
 sudo truncate -s 0 /@swap/swapfile
 ```
 
-For 8GiB ram, size needed fir hibernation is 8,8GiB -> 9011MiB.
+For 8GiB ram, size needed for hibernation is 8,8GiB -> 9011MiB.
 
 ```
 sudo fallocate -l 9011M /@swap/swapfile
@@ -35,7 +35,7 @@ sudo mkdir /swap
 sudo btrfs subvolume list /
 ```
 
-From the last command we not the id of @swap sub-volume (first number on the line).
+From the last command we note the id of @swap sub-volume (first number on the line).
 
 Now let's edit _fstab_
 ```

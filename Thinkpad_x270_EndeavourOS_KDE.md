@@ -157,21 +157,41 @@ This can be done in KDE display settings, and needs to restart the sessions to b
 ### HDMI
 Works out of the box, just select the proper audio output in audio settings in case the sound keeps coming from the computer speakers.
 
-## Not working
-For now the finger print reader ... but expected at this stage. To be investigated.
-* https://github.com/3v1n0/libfprint
-* https://snapcraft.io/validity-sensors-tools
-```
-sudo snap connect validity-sensors-tools:raw-usb 
-sudo snap connect validity-sensors-tools:hardware-observe
-cd /
-sudo validity-sensors-tools.initializer
-```
-but it fails to upload the firmware
+## Fingerprint reader
+### Setup
+Install (AUR) ```python-validity```.
 
-Potential issue (not tested yet) with audio via HDMI.
+```
+systemctl stop python3-validity
+sudo validity-sensors-firmware
+sudo python3 /usr/share/python-validity/playground/factory-reset.py
+systemctl start python3-validity
+systemctl status python3-validity
+fprintd-enroll
+```
 
-For both issues, check decicated Arch page below.
+After 10 enrolings, the fingerprint reader should detect properly the finger print
+
+### Activate for KDE, login, sudo, etc...
+
+Got to KDE setting, Users, Configure Fingerprint Authentication, clear all finger prints and register new one(s). 
+
+Edit (sudo):
+
+```
+/etc/pam.d/system-local-login
+/etc/pam.d/system-login
+/etc/pam.d/system-auth
+/etc/pam.d/su
+```
+
+to add at the TOP of the files
+
+```
+auth            sufficient      pam_fprintd.so
+```
+
+Note: KDE does not activate by default the fingerprint reader, you need to press ENTER first.
 
 ## Customization
 ### Bash

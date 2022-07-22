@@ -193,6 +193,15 @@ auth            sufficient      pam_fprintd.so
 
 Note: KDE does not activate by default the fingerprint reader, you need to press ENTER first.
 
+## Audio
+### Pipewire
+
+To solve audio issue, install Pipewire (Alsa and Pulseaudio client) and make sure `pulseaudio-alsa` has been removed.
+`pipewire-alsa`, ` pipewire-pulse`
+Also install `lib32-pipewire` + JACK plugin
+
+Reboot or restart audio service
+
 ## Customization
 ### Bash
 

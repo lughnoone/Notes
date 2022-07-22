@@ -202,6 +202,8 @@ Also install `lib32-pipewire` + JACK plugin
 
 Reboot or restart audio service
 
+https://wiki.archlinux.org/title/PipeWire#Installation
+
 ## Customization
 ### Bash
 

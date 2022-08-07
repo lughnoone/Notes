@@ -4,9 +4,9 @@
 
 _(prerequisite: install from AUR ```timeshift```, ```timeshift-autosnap```, ```hibernator``` with ```yay```)_
 
-The aim of this procedure is to explain how to setup Hibernation on a Btrfs file system encrypted with LUKS. Since Btrfs and _swap_ partition do not coexist well on LUKS, the idea is to use a swap file. Even if Btrfs now supports hibernationwith kernel > 5.11 (??), it is not obvious to make it work without breaking the MUCH useful _snapshot_ functionality.
+The aim of this procedure is to explain how to setup Hibernation on a Btrfs file system encrypted with LUKS. Since Btrfs and _swap_ partition do not coexist well on LUKS, the idea is to use a swap file. Even if Btrfs now supports hibernationwith kernel > 5.11 (??), it is not obvious to make it works without breaking the MUCH useful _snapshot_ functionality.
 
-We'll explain here how to make it work, knowledge gathered after much search on Internet.
+We'll explain here how to make it works, knowledge gathered after much search on Internet.
 
 ## Create a Btrfs subvolume and the _swap_ file
 Let's create a subvolume _@swap_ with a swap file in it:
@@ -51,7 +51,7 @@ Add (replacing the filesystem by yours and subvolid by the one above):
 
 _(take the opportunity to add option 'ssd' to all sub-volumes and remove 'autodefrag' which is not recommended for ssd)_
 
-Now tes the configuration:
+Now test the configuration:
 ```
 sudo mount -a
 ```

@@ -18,6 +18,71 @@ Btrfs is the replacement for ext4, resizable on demand and easy to backup with T
 
 Here everything is encrypted, but still we can setup the disk encryption on top.
 
+#### Recover grub for a encrypted Btrfs filesystem
+
+
+Just in case it can help others, here is what I did to solve [this](https://forum.endeavouros.com/t/grub-2-2-06-r322-gd9b4638c5-1-wont-boot-and-goes-straight-to-the-bios-after-update/30653) grub issue on encrypted btrfs disk.
+
+First boot on live usb from the last EndeavourOS iso downloaded on the website.
+Then I followed the expected procedure: https://forum.endeavouros.com/t/the-latest-grub-package-update-needs-some-manual-intervention/30689
+
+But since it might not be obvious to everyone, here his a quick summary.
+
+Get the actual partitions name:
+
+```
+sudo fdisk -l
+sda1: EFI
+sda2: Linux File System
+```
+(pay attention to adapt the partition name to your case)
+
+Unlock encrypted partition:
+`sudo cryptsetup open /dev/sda2 mycryptdevice`
+
+It's now available in `/dev/mapper/mycryptdevice`
+
+Now mount all btrfs subvolumes from the unlocked partition:
+
+```
+sudo mount -o subvol=@ /dev/mapper/mycryptdevice /mnt
+sudo mount -o subvol=@log /dev/mapper/mycryptdevice /mnt/var/log
+sudo mount -o subvol=@cache /dev/mapper/mycryptdevice /mnt/var/cache
+sudo mount -o subvol=@home /dev/mapper/mycryptdevice /mnt/home
+```
+
+Then mount the ESP from /dev/sda1: (pay attention its indeed /dev/sda**1**)
+`sudo mount /dev/sda1 /mnt/boot/efi`
+
+Now I'm able to chroot on my install:
+`sudo arch-chroot /mnt`
+
+Finally I was able to repair grub with:
+
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=EndeavourOS-grub
+```
+
+Reboot, and it worked !
+
+Edit: you will end-up with a new UEFI entry EndeavourOS-grub (previous one was EndeavourOS). You may need to select the new one after reboot is your BIOS boot menu.
+
+To clean-up everything:
+```
+sudo downgrade grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=EndeavourOS
+```
+
+Then edit pacman.conf to avoid any further update of Grub pending the problem resolution.
+
+```sudo nano /etc/pacman.conf```
+
+and uncomment:
+
+```IgnorePkg   = grub```
+
 
 ### Opal SED
 

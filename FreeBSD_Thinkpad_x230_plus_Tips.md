@@ -108,6 +108,11 @@ pkg search virtualbox
 pkg install _virtualbox guest addition package_
 ```
 
-After install the package install output provides 2 services to be enabled via ```sysrc```. Run both commands.
+After install the package install output provides 2 services to be enabled via `sysrc`. Run both commands.
 
 Finally reboot.
+
+## Tweaks
+
+### Propoer date time formating
+In KDE, go to settings, regional settings, Format and change Time settings by selecting `en_SE`. It allows to remove the seconds fronm the short format, which make the lock screen better without those running seconds.

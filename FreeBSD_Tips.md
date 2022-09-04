@@ -44,13 +44,20 @@ This being said, a simpler alternative is to install ```GhostBSD``` that is a de
 
 ## Install ```slim``` + ```kde5```
 ```
-pkg install xorg kde5 slim
+pkg install xorg graphics/drm-kmod kde5 slim
+```
+
+Enable intel graphic drivers + dbus + slim in `/etc/rc.conf`
+```
+dbus_enable="YES"
+slime_enable="YES"
+kld_list="i915kms"
 ```
 
 Next, as normal user, create the file ```~/.xinitrc```
 Its content must be the path to ```startplasma-x11```:
 ```
-exec /path/to/startplasma-x11
+exec /usr/local/bin/startplasma-x11
 ```
 
 Finally lets install `slim` themes to make it a bit more FreeBSD like:
@@ -62,6 +69,7 @@ nano /usr/local/etc/slim.conf
 at the bottom change `current_theme` to:
 
 ```
+daemon yes
 current_theme fbsd
 ```
 
@@ -69,12 +77,8 @@ Make sure your user has also the ```video``` group:
 ```
 pw usermode username -G wheel video
 ```
-Type ```slim``` to test you are able to login and access Xfce.
-If fine, you can run ```slim``` at boot time:
-```
-sysrc enable dbus
-sysrc enable slim
-```
+
+Type ```slim``` to test you are able to login and access Kde.
 
 ## Install ```virtualbox``` guest addition
 ```

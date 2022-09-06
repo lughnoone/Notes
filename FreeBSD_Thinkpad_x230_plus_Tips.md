@@ -16,7 +16,7 @@ su
 pkg install sudo
 visudo
 ```
-in the editor uncomment the ligne authorizing all users part of `wheel` groups as sudoers.
+In the editor uncomment the ligne authorizing all users part of `wheel` groups as sudoers.
 
 Then give the wheel group to expected user:
 ```
@@ -95,8 +95,8 @@ pw usermode username -G wheel video
 Type `slim` to test you are able to login and access Xfce.
 If fine, you can run `slim` at boot time:
 ```
-sysrc enable dbus
-sysrc enable slim
+sysrc dbus_enable="YES"
+sysrc slim-enable="YES"
 ```
 The system is veru minimalistic. You may want to install `pulseaudio` Xfce related packages to enable the sound, install `Firefox`, and needed applications.
 
@@ -112,7 +112,25 @@ After install the package install output provides 2 services to be enabled via `
 
 Finally reboot.
 
-## Tweaks
+## Tips
 
-### Propoer date time formating
+### Update system
+
+Get FreeBSD latest patchs.
+
+```
+freebsd-update fetch
+freebsd-update install
+```
+
+### Bash + completion
+
+If you like bash better than sh/csh (zsh is still the best :-p)
+
+```
+pkg install bash bash-completion
+```
+
+### Proper date time formating
+
 In KDE, go to settings, regional settings, Format and change Time settings by selecting `en_SE`. It allows to remove the seconds fronm the short format, which make the lock screen better without those running seconds.

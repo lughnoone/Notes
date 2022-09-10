@@ -134,3 +134,32 @@ pkg install bash bash-completion
 ### Proper date time formating
 
 In KDE, go to settings, regional settings, Format and change Time settings by selecting `en_SE`. It allows to remove the seconds fronm the short format, which make the lock screen better without those running seconds.
+
+### Avoid changing DNS after DHCP @ attribution
+
+Set your DNS as wanted: (here Cloudflare)
+
+```
+nano /etc/resolv.conf
+
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+nameserver 2606:4700:4700::1111
+nameserver 2606:4700:4700::1001
+```
+
+then
+
+```
+chflags schg /etc/resolv.conf
+```
+
+### Network Manager
+
+To simplify network connections, especially for wifi, a network manager is welcome.
+
+```
+pkg install net-mgmt/networkmgr
+```
+
+If not started after reboot, run as root `networkmgr`. See above for `bsdconfig wireless` that also handle wifi selection, connection.

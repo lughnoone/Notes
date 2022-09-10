@@ -164,6 +164,38 @@ pkg install net-mgmt/networkmgr
 
 If not started after reboot, run as root `networkmgr`. See above for `bsdconfig wireless` that also handle wifi selection, connection.
 
+### Webcam
+
+Stolen from [David Schlachter](https://www.davidschlachter.com/misc/freebsd-webcam-browser).
+
+```
+pkg install webcamd
+sysrc webcamd_enable="YES"
+sysrc kld_list+="cuse"
+```
+
+Then reboot or:
+
+```
+kldload cuse
+service webcamd start
+```
+
+To test the webcam:
+
+```
+pkg install pwcview
+pwcview -s sqcif -f 25 -d /dev/video0
+```
+
+Finally to allow the wecam in browser (FF):
+
+```
+pkg install v4l-utils v4l_compat
+```
+
+You can test on any webside using camera, like any optician.
+
 ### Bluetooth (headphones)
 
 Inspired from [this](https://jrgsystems.com/posts/2022-08-20-how-i-configure-bluetooth-headphones-on-freebsd-13-1/) and [this](https://jrgsystems.com/posts/2022-09-06-blued/)

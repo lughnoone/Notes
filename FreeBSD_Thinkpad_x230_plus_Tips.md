@@ -172,6 +172,7 @@ Stolen from [David Schlachter](https://www.davidschlachter.com/misc/freebsd-webc
 pkg install webcamd
 sysrc webcamd_enable="YES"
 sysrc kld_list+="cuse"
+pw groupmod webcamd -m $USER
 ```
 
 Then reboot or:
@@ -295,3 +296,33 @@ hccontrol -n ubt0hci create_connection headphones
 hccontrol -n ubt0hci write_authentication_enable 1
 virtual_oss -T /dev/sndstat -S -a o,-4 -C 2 -c 2 -r 44100 -b 16 -s 1024 -R /dev/dsp0 -P /dev/bluetooth/headphones -d dsp -t vdsp.ctl&
 ```
+
+### Finger print reader
+
+Procedure from [Gawen](https://hauweele.net/~gawen/blog/?p=408).
+
+```
+pkg install security/libfprint security/pam_fprint
+pkg install fprint_demo
+```
+
+Issue is that `pam_fprint` and `fprintd` (systemd dependency) are deprecated, so no PAM/DBUS authentication :-(.
+
+Still we can test it works. Run `usbconfig` and note the id (ugenx.x). Then:
+
+```
+pw groupadd fprint
+pw groupmod fprint -m $USER
+
+/etc/rc.conf:
+devfs_system_ruleset="localrules"
+
+/etc/devfs.rules:
+[localrules=10]
+add path 'ugen0.3' mode 0660 group fprint
+add path 'usb/0.3.0' mode 0660 group fprint
+
+service devfs restart
+```
+
+Run `fprint_demo`, and test the reader.

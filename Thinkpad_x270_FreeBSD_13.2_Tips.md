@@ -87,9 +87,11 @@ Add in `/etc/rc.conf`
 
 ```
 wlans_iwm0="wlan0"
-ifconfig_wlan0="WPA SYNCDHCP"
+ifconfig_wlan0="mode 11g country FR regdomain ETSI WPA SYNCDHCP"
 ifconfig_wlan0_ipv6="inet6 accept_rtadv"
 ```
+
+The `mode 11g` is used to select 11g compatible device, because currently `iwm` is not compatible with 802.11n/ac (see [iwm man page](https://man.freebsd.org/cgi/man.cgi?query=iwm&apropos=0&sektion=4&manpath=FreeBSD+14.0-CURRENT&arch=default&format=html)).
 
 Edit `/etc/wpa_supplicant.conf`
 
@@ -179,10 +181,17 @@ powerd_flags="-a hiadaptive -b adaptive"
 dumpdev="NO"
 zfs_enable="YES"
 wlans_iwm0="wlan0"
-ifconfig_wlan0="WPA SYNCDHCP"
+ifconfig_wlan0="mode 11g country FR regdomain ETSI WPA SYNCDHCP"
 ifconfig_wlan0_ipv6="inet6 accept_rtadv"
 kld_list="i915kms acpi_video cuse"
 dbus_enable="YES"
 sddm_enable="YES"
 webcamd_enable="YES"
+#     While iwlwifi supports all        802.11 a/b/g/n/ac/ax the compatibility code
+#     currently only supports 802.11 a/b/g modes.  Support for 802.11 n/ac is
+#     to        come. 802.11ax and 6Ghz support are planned.
+#devmatch_blocklist="if_iwm"
+#wlans_iwlwifi0="wlan1"
+#ifconfig_wlan1="country FR regdomain ETSI WPA SYNCDHCP"
+#ifconfig_wlan1_ipv6="inet6 accept_rtadv
 ```

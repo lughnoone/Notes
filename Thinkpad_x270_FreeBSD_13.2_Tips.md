@@ -106,7 +106,11 @@ Install GhostBSD network manager
 
 ```sudo pkg install networkmgr```
 
-put `networkmgr` in Settings > Startup and Shutdown > Autostart
+then allow to run the app with `sudo` without password. Run `sudo visudo` and add:
+
+```
+yourusernamepartofwheelgroup ALL = NOPASSWD: /usr/local/bin/networkmgr
+```
 
 ## Graphic pkg installer
 

@@ -167,6 +167,41 @@ You can test on any webside using camera, like any optician.
 
 Set `boot_mute="YES"` in `/boot/loader.conf`.
 
+## Virtual Box install
+
+```
+pkg install virtualbox-ose
+```
+
+Follow provided instruction to load kernel module, add group to user, network bridge, usb, etc.
+
+Load `vboxdrv` kernel module in _/boot/loader.conf_:
+
+```
+vboxdrv_load="YES"
+```
+
+add user to  _vboxusers_ group:
+
+```
+pw groupmod vboxusers -m mysuer
+```
+
+Setup network in _/etc/rc.conf_:
+
+```
+vboxnet_enable="YES"
+```
+
++ (see USB setup in provided procedure)
+
+After reboot, in case you have a mismatch error with the kernel module and the version of the kernel, you might need to rebuild it to match kernel version.
+
+```
+cd /usr/ports/emulators/virtualbox-ose-kmod
+make
+make reinstall
+```
 
 ## rc.conf
 
@@ -191,6 +226,8 @@ kld_list="i915kms acpi_video cuse"
 dbus_enable="YES"
 sddm_enable="YES"
 webcamd_enable="YES"
+vboxnet_enable="YES"
+
 #     While iwlwifi supports all        802.11 a/b/g/n/ac/ax the compatibility code
 #     currently only supports 802.11 a/b/g modes.  Support for 802.11 n/ac is
 #     to        come. 802.11ax and 6Ghz support are planned.

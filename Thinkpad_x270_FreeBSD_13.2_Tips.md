@@ -1,4 +1,4 @@
-## Add groups to user
+    ## Add groups to user
 
 ```
 pw usermod toto -G wheel,video
@@ -185,6 +185,13 @@ add user to  _vboxusers_ group:
 
 ```
 pw groupmod vboxusers -m mysuer
+```
+
+Change permissions in `/etc/devfs.conf`:
+
+```
+own     vboxnetctl root:vboxusers
+perm    vboxnetctl 0660
 ```
 
 Setup network in _/etc/rc.conf_:

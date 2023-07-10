@@ -1,6 +1,7 @@
-## BIOS ugrade Lenovo x270 under FreeBSD (or linux)
+## BIOS upgrade Lenovo x270 under FreeBSD (or linux)
 
 THIS METHOD IS NOT THE METHOD RECOMMENDED BY LENOVO - FAILED BIOS UPDATE CAN BRICK YOUR DEVICE
+
 !!! USE THIS PROCEDURE AT YOUR OWN RISK !!!
 
 Download BIOS ISO CD image from [Lenovo support website](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-x-series-laptops/thinkpad-x270/downloads/ds120442)
@@ -31,14 +32,14 @@ Unmount device:
 umount /dev/da0
 ```
 
-Then use `dd` to write the extracted image to usb stick:
+Then use `dd` to write the extracted image to the usb stick:
 
 ```
 dd if=bios.img of=/dev/da0 bs=1M conv=sync
 ```
 
-Reboot, press enter the F12 to boot from USB device.
+Reboot, press _enter_ then _F12_ to boot from USB device.
 => upgrade
 
-_Note: this also work for linux, but device is likely something like `/dev/sdX`_
+_Note: this also works for linux, but device is likely something like `/dev/sdX`_
 

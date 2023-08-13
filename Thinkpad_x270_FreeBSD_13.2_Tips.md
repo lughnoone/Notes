@@ -210,6 +210,13 @@ make
 make reinstall
 ```
 
+## SD card reader
+
+```
+pkg install rtsx
+```
+
+
 ## rc.conf
 
 ```
@@ -223,23 +230,27 @@ sshd_enable="YES"
 ntpd_enable="YES"
 powerd_enable="YES"
 powerd_flags="-a hiadaptive -b adaptive"
+performance_cx_lowest="C2"
+#powerdxx_enable="YES"
 # Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
 dumpdev="NO"
 zfs_enable="YES"
 wlans_iwm0="wlan0"
-ifconfig_wlan0="mode 11g country FR regdomain ETSI WPA SYNCDHCP"
+ifconfig_wlan0="mode 11g country DE regdomain ETSI WPA SYNCDHCP powersave"
 ifconfig_wlan0_ipv6="inet6 accept_rtadv"
-kld_list="i915kms acpi_video cuse"
+kld_list="i915kms acpi_video cuse acpi_ibm coretemp"
 dbus_enable="YES"
 sddm_enable="YES"
 webcamd_enable="YES"
+#vbox
 vboxnet_enable="YES"
+devfs_system_ruleset="system"
 
 #     While iwlwifi supports all        802.11 a/b/g/n/ac/ax the compatibility code
 #     currently only supports 802.11 a/b/g modes.  Support for 802.11 n/ac is
 #     to        come. 802.11ax and 6Ghz support are planned.
 #devmatch_blocklist="if_iwm"
 #wlans_iwlwifi0="wlan1"
-#ifconfig_wlan1="country FR regdomain ETSI WPA SYNCDHCP"
-#ifconfig_wlan1_ipv6="inet6 accept_rtadv
+#ifconfig_wlan1="country DE regdomain ETSI WPA SYNCDHCP"
+#ifconfig_wlan1_ipv6="inet6 accept_rtadv"
 ```

@@ -1,4 +1,4 @@
-    ## Add groups to user
+## Add groups to user
 
 ```
 pw usermod toto -G wheel,video
@@ -216,6 +216,34 @@ make reinstall
 pkg install rtsx
 ```
 
+## Update FreeBSD
+
+```
+freebsd-update fetch
+freebsd-update install
+```
+
+Reboot, then run `cat /etc/os-release` to ensure you are on the new version.
+
+```
+pkg update
+pkg upgrade
+```
+
+## Upgrade FreeBSD
+
+Identifiy the release to upgrade to. Then run:
+
+```
+freebsd-update -r 13.2-RELEASE upgrade
+freebsd-update install
+```
+
+Reboot and install remaning post install updates.
+
+```
+freebsd-update install
+```
 
 ## rc.conf
 
